@@ -1,47 +1,19 @@
-# Roadmap, PRD & Prototype
+# One click compliance checklist, Simplified PRD (RouteLogic)
 
-> **Module 4 · ★ Deliverable 4.** Repo file `04-roadmap/roadmap-prd-prototype.md` — part of your submission.
-> Do the lab in the **Module 4 · Exercise 1 Guide** (linked from the Module 4 deck), then click **⬇ Download .md** — it saves as this exact file. Commit it here.
-> It becomes the **Roadmap, PRD & Prototype** slide of your Module 6 final deck. (Your Module 4 · Exercise 2 PRD sprint lands in `prd-and-prototype.md`.)
-
-## High-level product roadmap
-
-_Future direction, key milestones, and phased execution over time._
-
-_____
-
-## PRD snippets
-
-_The key elements of your simplified PRD._
-
-_____
-
-## Wireframes / prototype
-
-_A visual or interactive model of your proposed solution._
-
-_[screenshot or link to your prototype]_
-
-
-
-
-AI OUTPUT OF PRD BUILDER:
-# Collapse the 14.6-min compliance step into a smart pre-filled form, Simplified PRD (RouteLogic)
-
-**Author:** Me · **Status:** Draft · **Target:** High-Fidelity Prototype · **Persona:** Frontline Delivery Drivers
+**Author:** Me · **Status:** Draft · **Target:** High-Fidelity Prototype · **Persona:** Dispatch coordinators
 
 ## 1. The Big Picture
-- **Vision:** To eliminate the complexity of multistep compliance flows and the disruption to frontline drivers, the feature will generate a pre-filled compliance form that satisfies compliance requirements for submission to coordinators.
-- **Press release:** A routine compliance check shouldn’t take 14.6 minutes and three screens to complete. RouteLogic Velocity replaces the tedious process with a single, pre-filled form, reducing manual entry and letting drivers verify and submit compliance checks in one action.
+- **Vision:** Make compliance reporting effortless by turning a 14.6-minute, multi-step process into a fast, accurate, one-click experience that keeps dispatch coordinators focused on operations.
+- **Press release:** RouteLogic today announced the One-Click Compliance Checklist, a streamlined reporting experience designed to help dispatch coordinators complete compliance checks faster and with less manual effort. By replacing the existing multi-step, 14.6-minute process with a single-screen, pre-filled form, coordinators can review required information, correct any inaccuracies, and submit compliance records with one click. The new experience reduces repetitive data entry while keeping essential compliance workflows inside RouteLogic.
 
-The result: less time logging checks, fewer repeated actions, and more time completing deliveries.** Coordinators get the compliance information they need without adding steps for drivers, while live dispatch stays at the center of the workflow.
+With One-Click Compliance Checklist, dispatch coordinators spend less time navigating forms and more time maintaining accurate operational visibility. The feature is designed to reduce compliance logging time by at least two minutes while protecting usage of RouteLogic's live dispatch tool. Initially launching as a four-week pilot across three customer accounts, the feature represents RouteLogic's commitment to operational simplicity: making everyday work faster without sacrificing the reliability and functionality customers depend on.
 - **Success metric:** Compliance check lead time
 - **Guardrail:** Dispatch usage rate
 
 ## 2. The Details
 ### User stories
-- As a frontline delivery driver, I want a simple process for delivering my compliance required reporting to dispatch coordinators.
 - As a dispatch coordinator, I want a consistent report from frontline drivers that I can submit for required compliance checks and for delivery records.
+- As a dispatch coordinator, I want to be able to submit compliance reports quicker to focus on operations.
 ### Screens to build
 - 1. The form that drivers can fill out to satisfy compliance requirements
 - 2. The receipt page of the report for dispatch coordinators to review and make any necessary edits before submission
@@ -75,25 +47,43 @@ The result: less time logging checks, fewer repeated actions, and more time comp
 - No dispatch redesign: Keep existing navigation and live dispatch behavior intact.
 - No broad UI redesign: Limit changes to the compliance form and directly related feedback states.
 - No new analytics platform: Use existing instrumentation where available to measure completion time and submission outcomes.
-- No expansion beyond the pilot: Support the existing driver workflow and three pilot accounts; defer generalized configuration and multi-platform expansion.
+- No expansion beyond the pilot: Support the existing dispatcher workflow; defer generalized configuration and multi-platform expansion.
 - No bypassing compliance requirements: All existing mandatory fields, validations, and audit requirements must remain enforced.
 - No unverified success states: Never display a successful submission confirmation until the existing system confirms the record was saved.
 
 ## 3. The Logistics
 ### Features out
-_exclusions_
+- W1	AI-generated compliance reports	Adds complexity without being necessary for one-click reporting.
+- W2	Full dispatch dashboard redesign	Does not directly support the primary metric.
+- W3	Automated driver route reassignment	Addresses a separate synchronization problem.
+- W4	Push notification system	Not required to complete compliance submissions.
+- W5	External integrations (WhatsApp, third-party APIs)	The objective is to keep compliance workflows inside RouteLogic.
+- W6	New analytics infrastructure	Existing data should be sufficient to measure the pilot.
+- W7	Multi-account customization engine	Unnecessary complexity for a three-account pilot.
 ### Edge cases & safety guard
-_unhappy paths_
+- It should not submit compliance checks without approval from the dispatcher
+- It should not allow submission without mandatory compliance information
 ### Decision log
-_scope choices_
+- No new integrations
+- No AI infrastructure or integration
 ### Evals
-_success targets_
+- Time to submission
+- Usage %
+- Submission accuracy % above 90
 
 ## MoSCoW scope
-- **Must:** [ ] Single-screen compliance form: Consolidate the existing three-screen confirmation flow into one form, with required compliance fields visible together.; [ ] Pre-fill available data: Populate fields using existing, reliable delivery and route data to eliminate redundant manual entry.; [ ] Edit and verify pre-filled values: Allow drivers to correct missing, inaccurate, or outdated information before submission.; [ ] Required-field validation: Clearly identify missing or invalid mandatory information and prevent incomplete compliance submissions.; [ ] One-action submission: Let drivers submit a completed check with one explicit action rather than navigating multiple confirmation screens.; [ ] Submission confirmation: Provide clear success or failure feedback so drivers know whether the check was logged.; [ ] Reliable data persistence: Prevent entered information from being lost when navigating away, encountering an error, or temporarily losing connectivity.; [ ] Prevent duplicate submissions: Handle repeated taps and retry attempts without creating duplicate compliance records.; [ ] Preserve live dispatch workflow: Keep drivers within the existing dispatch experience and preserve their active delivery context.; [ ] Baseline and measure completion time: Capture the time taken to log a compliance check before and after the change, using a consistent definition.
-- **Should:** Offline submission queue: Save completed checks locally when connectivity is unavailable and sync them when connectivity returns, with clear sync status.; [ ] Field-level data provenance: Indicate which values were pre-filled and which require driver confirmation, especially for safety-critical information.; [ ] Inline correction and recovery: Let drivers fix validation errors without losing entered data or restarting the workflow.; [ ] Instrument friction points: Track form abandonment, validation errors, manual edits, retries, and submission failures to explain changes in completion time.; [ ] Pilot comparison by account: Compare results across the three pilot accounts to identify integration issues or differences in workflow performance.; [ ] Accessibility and field usability: Ensure controls, labels, and touch targets work well on supported driver devices and under typical on-the-road operating conditions.
-- **Could:** Adaptive pre-fill: Improve suggestions using recurring driver behavior or historical corrections.; [ ] Smart defaults: Recommend likely values for fields that cannot be reliably populated from existing system data.; [ ] Configurable form layouts: Allow account-specific field ordering or optional-field presentation without changing mandatory compliance requirements.; [ ] Advanced performance dashboard: Give coordinators visibility into completion-time trends, error rates, and compliance workflow bottlenecks.; [ ] Contextual help: Add explanations for less familiar compliance fields where pilot feedback shows genuine confusion.
-- **Won't (now):** AI-generated compliance data: No generative AI or speculative field completion; use existing trusted system data first.; [ ] Full dispatch redesign: No broad navigation overhaul, route optimization redesign, or coordinator dashboard rebuild.; [ ] New analytics products: No executive fleet analytics or standalone reporting dashboards.; [ ] Advanced audit exports: No new PDF export or audit-reporting experience; preserve existing compliance records and required auditability.; [ ] Shift handoff redesign: No handoff wizard or broader shift-management workflow.; [ ] Training and onboarding flows: No new in-app coordinator training program.; [ ] Predictive ETA or notification enhancements: No AI ETA display or general-purpose driver notification initiative.; [ ] Removal of required compliance steps: No shortcuts that bypass mandatory fields, evidence, attestations, or regulatory checks.; [ ] Cross-platform or account-wide redesign: No expansion beyond the supported driver workflow and integrations needed for the three-account pilot.
+- **Must:** M1	Single-screen checklist	Users can view and complete all required compliance fields on one screen.; M2	Pre-filled information	Existing available driver, vehicle, route, and delivery information populates automatically.; M3	Required field validation	The system identifies missing mandatory information before submission.; M4	One-click submission	Coordinators can submit a completed checklist with one action.; M5	Submission confirmation	Users receive clear confirmation that their compliance check was successfully recorded.; M6	Submission persistence	Submitted compliance records are saved and remain accessible in RouteLogic.
+- **Should:** S1	Edit pre-filled fields	Allows coordinators to correct inaccurate or outdated information before submission.; S2	Duplicate submission prevention	Prevents accidental duplicate compliance records from repeated clicks.; S3	Submission error handling	Clearly communicates failed submissions and allows users to retry.; S4	Submission timestamp	Records when compliance checks were completed to support operational visibility.; S5	Live dispatch compatibility	Ensures compliance submissions do not interrupt or degrade the existing live dispatch workflow.
+- **Could:** ID	Sub-requirement	Rationale; C1	Smart field suggestions	Suggests values based on historical compliance submissions.; C2	Configurable checklist templates	Allows different accounts to customize compliance requirements.; C3	Progress indicator	Shows completion status for partially completed checklists.; C4	Bulk compliance submission	Allows coordinators to process multiple eligible checks together.; C5	Compliance performance reporting	Provides insights into average submission times and completion rates.
+- **Won't (now):** W1	AI-generated compliance reports	Adds complexity without being necessary for one-click reporting.; W2	Full dispatch dashboard redesign	Does not directly support the primary metric.; W3	Automated driver route reassignment	Addresses a separate synchronization problem.; W4	Push notification system	Not required to complete compliance submissions.; W5	External integrations (WhatsApp, third-party APIs)	The objective is to keep compliance workflows inside RouteLogic.; W6	New analytics infrastructure	Existing data should be sufficient to measure the pilot.; W7	Multi-account customization engine	Unnecessary complexity for a three-account pilot.
 
 ---
 **Builder hook:** Build a working prototype based on this PRD. Use the User Story as the core flow, Functional Requirements as build constraints, and prioritize speed and clarity over visual complexity.
+
+
+PRD RESULT:
+https://lovable.dev/preview/ou1JFe79a2idVXn476wxVK9zYdeJMVtg
+
+<img width="2628" height="1700" alt="image" src="https://github.com/user-attachments/assets/f3c1502c-9dc4-4e82-a86f-0530115f4ecd" />
+<img width="2628" height="1519" alt="image" src="https://github.com/user-attachments/assets/54ff019a-8b0a-4738-ae1b-aa29e4d749c2" />
+<img width="2628" height="1519" alt="image" src="https://github.com/user-attachments/assets/a74312d7-3b17-4940-8a1c-2d11f094f343" />
