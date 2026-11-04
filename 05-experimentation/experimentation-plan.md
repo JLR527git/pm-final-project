@@ -1,25 +1,33 @@
-# Experimentation Plan
+# A/B Experiment Brief, RouteLogic (B2B)
 
-> **Module 5 · ★ Deliverable 5.** Repo file `05-experimentation/experimentation-plan.md` — part of your submission.
-> Do the lab in the **Module 5 · Exercise Guide** (linked from the Module 5 deck), then click **⬇ Download .md** — it saves as this exact file. Commit it here.
-> It becomes the **Experimentation Plan** slide of your Module 6 final deck.
-
-## Overview
-
-_A high-level validation strategy to test your hypothesis before full-scale development._
-
-_____
-
-## What you're testing
-
-| Element | Detail |
+## Parameters
+| Parameter | Decision |
 |---|---|
-| Hypothesis under test | _____ |
-| Experiment design (A/B, etc.) | _____ |
-| Primary metric | _____ |
-| Guardrail metric | _____ |
-| Decision rule (ship / kill / pivot) | _____ |
+| Feature under test | One-Click Compliance Checklist The largest predicted benefit to compliance and reporting time |
+| Persona | Dispatch Coordinators |
+| Expected outcome | Faster route reporting |
+| Primary success metric | Compliance check completion rate |
+| Baseline rate | 48 |
+| Guardrail metric | Usage of live dispatch tool |
+| Guardrail boundary | 5% drop |
+| Second guardrail | · |
+| Minimum Detectable Effect | 10 |
+| Sample size per arm | 390 |
+| Traffic split | 50/50 |
+| Test duration | 2 months |
+| Significance threshold | p < 0.05 |
 
-## Findings & decision _(after running it)_
+## Control vs. Variant
+- **Control (A):** The current RouteLogic flow
+- **Variant (B):** The one screen streamlined compliance reporting
+- **Held constant (isolation check):** Onboarding
+Route management
 
-_____
+## Hypothesis
+> I believe that One-Click Compliance Checklist The largest predicted benefit to compliance and reporting time for Dispatch Coordinators will result in Faster route reporting, as measured by a 10 change in Compliance check completion rate within 2 months. We will protect Usage of live dispatch tool throughout the test.
+
+## Shipping criteria
+> We will **ship** if Compliance check completion rate improves by ≥ 10 at p < 0.05 and Usage of live dispatch tool does not reach 5% drop after 2 months.
+> We will **iterate** if direction is positive but lift is below the MDE.
+> We will **kill** if the primary metric shows no improvement or moves negatively.
+> The read date is fixed at the end of 2 months, no results reviewed before this date.
